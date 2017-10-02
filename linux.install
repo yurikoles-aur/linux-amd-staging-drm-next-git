@@ -5,7 +5,7 @@ KERNEL_NAME=
 KERNEL_VERSION=
 
 post_install () {
-  # updating module dependencies
+  # Updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
@@ -31,7 +31,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  # also remove the compat symlinks
+  # Also remove the compat symlinks
   rm -f boot/initramfs-linux${KERNEL_NAME}.img
   rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
 }

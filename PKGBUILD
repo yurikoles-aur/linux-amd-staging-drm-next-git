@@ -30,7 +30,7 @@ sha256sums=(
             #'SKIP'
             '6d7a52b0ae947fe0984e11f1d88c701ceaa535eb176b3e905a78aa3ead656197'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '384515365b5424db6b19bd70c5dd645d85b9230c0735733ad26a43cfa79c75e1')
 
 pkgver() {
   cd "${_srcname}" || exit
