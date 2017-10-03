@@ -18,19 +18,19 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
 
 source=(
-        #"${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+        "${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # The main kernel config files
         'config.x86_64'
         # Pacman hook for initramfs regeneration
         '90-linux.hook'
         # Standard config files for mkinitcpio ramdisk
-        'linux.install')
+        'linux.preset')
 
 sha256sums=(
-            #'SKIP'
+            'SKIP'
             '6d7a52b0ae947fe0984e11f1d88c701ceaa535eb176b3e905a78aa3ead656197'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            '384515365b5424db6b19bd70c5dd645d85b9230c0735733ad26a43cfa79c75e1')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 pkgver() {
   cd "${_srcname}" || exit
@@ -40,10 +40,6 @@ pkgver() {
 }
 
 prepare() {
-  # TODO - Remove this hacky git clone and restore default Arch downloading after I have confirmed everything is AOK
-  echo "Downloading kernel source (shallow clone)"
-  git clone --depth=1 --branch ${_branch} --single-branch git://people.freedesktop.org/~agd5f/linux "${_srcname}"
-
   cd "${_srcname}" || exit
 
   cat "${srcdir}/config.x86_64" > ./.config
@@ -55,7 +51,7 @@ prepare() {
   # Don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
+  # Get kernel version
   make prepare
 
   # Load configuration
@@ -70,12 +66,10 @@ prepare() {
 
 build() {
   cd "${_srcname}" || exit
-
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
-
   pkgdesc="The Linux kernel and modules with AMDGPU DC patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -142,7 +136,6 @@ _package() {
 
   # Add System.map
   install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
-
 }
 
 _package-headers() {
