@@ -6,12 +6,11 @@
 #
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.3.r1177048.5e4d5d939dd6
+pkgver=6.5.r1204875.4b44f078f0bb
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge AMDGPU drivers'
-_product="${pkgbase%-git}"
-_branch=amd-staging-drm-next
 url=https://gitlab.freedesktop.org/agd5f/linux
+_branch=amd-staging-drm-next
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -229,6 +228,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
+_product="${pkgbase%-git}"
 pkgname=(
   "${_product}-git"
   "${_product}-headers-git"
