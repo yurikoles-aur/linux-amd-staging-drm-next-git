@@ -1,3 +1,5 @@
-linux-amd-staging-drm-next-git
-src
-*pkg*
+*
+!config
+!PKGBUILD
+!.SRCINFO
+!.gitignore
