@@ -6,7 +6,7 @@
 #
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.10.r1285412.4bf566304868
+pkgver=6.12.r1313255.16b8b0512423
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge AMDGPU drivers'
 url=https://gitlab.freedesktop.org/agd5f/linux
@@ -43,9 +43,9 @@ source=(
   config  # the main kernel config file
 )
 sha256sums=('SKIP'
-            'a32a48ab46061a1275b23f15c390e0aa48682ffe953f4f04d650bfe398700a87')
+            '02dbfa8936028f2d1a4bdca3387bf3a45bd572903d889b5795a1d722b63f27ab')
 b2sums=('SKIP'
-        '4c6db23bc6ae504e866d374c398ea9f14bf50fa20f8e65d1c8f6d95c403dc2665f9dbe379a63f3424eeb2617e30c895af2eb5709522d7315008e8ca22ba2bec1')
+        'f59e032ce00fb871ed527b0cd45c8787abd829645012aca4385c000a98c027e53e7ff033bf0154551d43e144c37bd821159aa52ad4a9c1059233e7d1183720ba')
 
 pkgver() {
   cd $_srcname
