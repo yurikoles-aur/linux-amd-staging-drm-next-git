@@ -6,7 +6,7 @@
 #
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.12.r1313499.c80feef27112
+pkgver=6.12.r1313576.f73e8ad616bc
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge AMDGPU drivers'
 url=https://gitlab.freedesktop.org/agd5f/linux
@@ -27,11 +27,11 @@ makedepends=(
   xz
 
   # htmldocs
-  graphviz
-  imagemagick
-  python-sphinx
-  python-yaml
-  texlive-latexextra
+  # graphviz
+  # imagemagick
+  # python-sphinx
+  # python-yaml
+  # texlive-latexextra
 )
 options=(
   !debug
@@ -43,9 +43,9 @@ source=(
   config  # the main kernel config file
 )
 sha256sums=('SKIP'
-            '4e648e32cf3aaca8594fd7443613a3bdce5dae2848214feb1be8d137e3db1f23')
+            'a3d44d98ac548fdbafc11a02b6139e175345438f8003fc6383ce31dce92fa6b4')
 b2sums=('SKIP'
-        'c3bc7e3ea2b943c2dcd5d2169eae63e90436963eb547c2301a3449169cdc8da13500c88acbfb4cc033ab78aa72950cf88e9fce00bc86d7a0af68b649761c2829')
+        '0e534788a7445e28128b46e797945c7dd1e9d4c673e25156e517c9b7ce1122a749b08e0a74204970af8197266e7076100e12c019c0c4b451862db96f6c3f6981')
 
 pkgver() {
   cd $_srcname
@@ -90,7 +90,7 @@ build() {
   cd $_srcname
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  make htmldocs
+  # make htmldocs
 }
 
 _package() {
@@ -186,7 +186,7 @@ _package-headers() {
   done
 
   echo "Removing documentation..."
-  rm -r "$builddir/Documentation"
+  rm -rf "$builddir/Documentation"
 
   echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
@@ -239,7 +239,7 @@ _package-docs() {
 pkgname=(
   "${_product}-git"
   "${_product}-headers-git"
-  "${_product}-docs-git"
+  # "${_product}-docs-git"
 )
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
