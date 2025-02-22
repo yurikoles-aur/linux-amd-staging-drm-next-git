@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with bleeding-edge AMDGPU drivers
-	pkgver = 6.12.r1313576.f73e8ad616bc
+	pkgver = 6.12.r1313645.203183eb6885
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -35,8 +35,7 @@ pkgname = linux-amd-staging-drm-next-git
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = virtualbox-guest-modules-arch
-	replaces = wireguard-arch
+	replaces = wireguard-lts
 
 pkgname = linux-amd-staging-drm-next-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux kernel with bleeding-edge AMDGPU drivers kernel

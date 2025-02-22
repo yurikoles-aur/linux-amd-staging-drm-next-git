@@ -6,7 +6,7 @@
 #
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.12.r1313576.f73e8ad616bc
+pkgver=6.12.r1313645.203183eb6885
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge AMDGPU drivers'
 url=https://gitlab.freedesktop.org/agd5f/linux
@@ -111,8 +111,7 @@ _package() {
     WIREGUARD-MODULE
   )
   replaces=(
-    virtualbox-guest-modules-arch
-    wireguard-arch
+    wireguard-lts
   )
 
   cd $_srcname
